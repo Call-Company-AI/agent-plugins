@@ -25,7 +25,9 @@ Short description: **Run your AI phone agents**
 
 Description:
 
-> Review calls, check agent readiness, keep knowledge current, and prepare, test and publish agent configuration changes. Sign in to Call Company and approve access to your Organization. Configuration edits remain drafts until published; other actions have the effects described by their tools. Requires a Call Company Pro plan or higher. Available actions depend on your role and approved permissions.
+> Review calls, check agent readiness, keep knowledge current, and prepare, test and publish agent configuration changes. Sign in to Call Company and approve access to your Organization. Configuration edits remain drafts until published; other actions have the effects described by their tools. Available actions depend on your role and approved permissions.
+
+Keep plan requirements in setup documentation and reviewer instructions. OpenAI's public listing must not advertise plans or upgrades; use the description above and the packaged metadata.
 
 ## Claude
 
