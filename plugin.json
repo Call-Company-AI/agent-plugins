@@ -1,0 +1,113 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "callcompany",
+  "version": "0.1.0",
+  "description": "Review calls, update knowledge, and manage your Call Company AI phone agents from ChatGPT, Codex, and Claude.",
+  "author": {
+    "name": "Call Company AI",
+    "url": "https://www.callcompany.ai"
+  },
+  "homepage": "https://www.callcompany.ai",
+  "keywords": [
+    "call-company",
+    "voice-agents",
+    "phone",
+    "receptionist"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Call Company",
+        "shortDescription": "Run your AI phone agents",
+        "longDescription": "Call Company answers your business's phone calls with an AI agent. Connect it to review calls, check agent readiness, keep knowledge current, and prepare, test and publish agent configuration changes. Configuration edits stay in a draft until published; other actions have the effects described by their tools. Sign in to Call Company and approve access to an Organization. Available actions depend on the permissions you approve, your role and your plan.",
+        "developerName": "Call Company AI",
+        "category": "Productivity",
+        "websiteURL": "https://www.callcompany.ai",
+        "supportURL": "https://www.callcompany.ai/contact",
+        "privacyPolicyURL": "https://www.callcompany.ai/privacy",
+        "termsOfServiceURL": "https://www.callcompany.ai/terms",
+        "logo": "./assets/logo.png",
+        "defaultPrompt": [
+          "Summarize this week's calls",
+          "What does my phone agent still need before it can go live?",
+          "Add our holiday opening hours to my agent's knowledge"
+        ],
+        "composerIcon": "./assets/logo.png"
+      },
+      "publication": {
+        "release_notes": "First public release."
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "List agents and their readiness",
+              "prompt": "Which of my Call Company agents are ready to take calls?",
+              "tools_triggered": [
+                "list_agents",
+                "get_agent_readiness"
+              ],
+              "expected_behavior": "Lists the account's agents and, for each, whether it is ready to take calls and what is still missing."
+            },
+            {
+              "description": "Summarize recent calls",
+              "prompt": "Summarize yesterday's calls for my front desk agent.",
+              "tools_triggered": [
+                "list_agents",
+                "list_calls"
+              ],
+              "expected_behavior": "Reads yesterday's calls for that agent and summarizes outcomes and caller requests without pasting full transcripts."
+            },
+            {
+              "description": "Read one call",
+              "prompt": "What did the last caller want?",
+              "tools_triggered": [
+                "list_calls",
+                "get_call"
+              ],
+              "expected_behavior": "Opens the most recent call and states the caller's request and the outcome."
+            },
+            {
+              "description": "Add knowledge without duplicating it",
+              "prompt": "Tell my agent we are closed on December 24.",
+              "tools_triggered": [
+                "search_knowledge",
+                "add_knowledge"
+              ],
+              "expected_behavior": "Checks existing knowledge first, then asks to confirm and adds or updates the entry; says callers hear it once it is published if needed."
+            },
+            {
+              "description": "Change the greeting as a draft",
+              "prompt": "Change my agent's greeting to 'Welcome to Bella Vista, how can I help?'",
+              "tools_triggered": [
+                "get_spec",
+                "apply_confirmed_patch",
+                "diff_versions"
+              ],
+              "expected_behavior": "Asks to confirm, saves the greeting to the draft, shows what changed, and states that callers do not hear it until it is published."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unrelated question",
+              "prompt": "What's the weather in Helsinki tomorrow?",
+              "expected_behavior": "Do not invoke Call Company tools. Answer using an appropriate other capability, or explain that Call Company does not handle this request."
+            },
+            {
+              "description": "General writing request",
+              "prompt": "Write a short poem about the sea.",
+              "expected_behavior": "Do not invoke Call Company tools. Answer using an appropriate other capability, or explain that Call Company does not handle this request."
+            },
+            {
+              "description": "Travel booking",
+              "prompt": "Book me a flight from Helsinki to Paris next Friday.",
+              "expected_behavior": "Do not invoke Call Company tools. Answer using an appropriate other capability, or explain that Call Company does not handle this request."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "repository": "https://github.com/Call-Company-AI/agent-plugins",
+  "license": "ISC"
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "callcompany": {
+      "type": "http",
+      "url": "https://api.callcompany.ai/api/mcp"
+    }
+  }
+}

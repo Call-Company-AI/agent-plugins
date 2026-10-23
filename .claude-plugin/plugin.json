@@ -1,0 +1,23 @@
+{
+  "name": "callcompany",
+  "version": "0.1.0",
+  "description": "Review calls, update knowledge, and manage your Call Company AI phone agents from ChatGPT, Codex, and Claude.",
+  "author": {
+    "name": "Call Company AI",
+    "url": "https://www.callcompany.ai"
+  },
+  "homepage": "https://www.callcompany.ai",
+  "keywords": [
+    "call-company",
+    "voice-agents",
+    "mcp"
+  ],
+  "repository": "https://github.com/Call-Company-AI/agent-plugins",
+  "license": "ISC",
+  "displayName": "Call Company",
+  "icon": "./assets/logo.png",
+  "documentationUrl": "https://github.com/Call-Company-AI/agent-plugins#readme",
+  "supportUrl": "https://www.callcompany.ai/contact",
+  "privacyPolicyUrl": "https://www.callcompany.ai/privacy",
+  "termsOfServiceUrl": "https://www.callcompany.ai/terms"
+}
