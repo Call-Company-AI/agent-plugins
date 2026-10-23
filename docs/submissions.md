@@ -13,6 +13,7 @@ Package publication, hosted connection verification, directory review, and direc
 | MCP URL | https://api.callcompany.ai/api/mcp |
 | Transport | Streamable HTTP |
 | Authentication | OAuth with dynamic client registration and PKCE |
+| Call Company plan | Pro or higher for hosted MCP |
 | Documentation | https://github.com/Call-Company-AI/agent-plugins#readme |
 | Website | https://www.callcompany.ai |
 | Support | https://www.callcompany.ai/contact |
@@ -24,7 +25,7 @@ Short description: **Run your AI phone agents**
 
 Description:
 
-> Review calls, check agent readiness, keep knowledge current, and prepare, test and publish agent configuration changes. Sign in to Call Company and approve access to your Organization. Configuration edits remain drafts until published; other actions have the effects described by their tools. Available actions depend on your role, plan and approved permissions.
+> Review calls, check agent readiness, keep knowledge current, and prepare, test and publish agent configuration changes. Sign in to Call Company and approve access to your Organization. Configuration edits remain drafts until published; other actions have the effects described by their tools. Requires a Call Company Pro plan or higher. Available actions depend on your role and approved permissions.
 
 ## Claude
 
@@ -48,8 +49,10 @@ See [OpenAI packaging](https://developers.openai.com/plugins/build/plugins), [su
 
 ## Reviewer account and demo
 
-Use a dedicated account and Organization with synthetic business data, a representative agent and draft, knowledge, and recent synthetic call records. Do not give reviewers access to customer Organizations. Keep the account usable for re-review and use the authentication method the directory supports. Credentials, grant IDs, customer data, and account-specific evidence must never be committed or included in an archive.
+Use a dedicated Pro-or-higher account and Organization with synthetic business data, a representative agent and draft, knowledge, and recent synthetic call records. Do not give reviewers access to customer Organizations. Keep the account usable for re-review and use the authentication method the directory supports. Credentials, grant IDs, customer data, and account-specific evidence must never be committed or included in an archive.
 
 Review scenarios are in `plugin.json` under `extensions.com.openai.review.test_cases`. Record a walkthrough of connection, readiness, call summaries, one call read, a knowledge update, and a greeting draft edit. Show the saved result and distinguish it from publication. Run the negative cases and verify that unrelated requests do not invoke Call Company tools. Use a disposable review agent for writes; a recording must show real outcomes, not scripted claims.
 
 Before final submission, verify the production tool metadata, full OAuth connection, representative authorized reads and writes, permission denials, revocation, privacy disclosures, public links, reviewer login, video, and publisher identity. Keep an explicit list of items not yet verified; do not mark them passed from code inspection alone.
+
+After a developer-tier release, record both Pro MCP success and direct API refusal, Business API success, Starter refusal, downgrade, and revoked-token refusal. Never claim that a marketplace listing unlocks a lower Call Company plan.

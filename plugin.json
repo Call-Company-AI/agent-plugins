@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "callcompany",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Review calls, update knowledge, and manage your Call Company AI phone agents from ChatGPT, Codex, and Claude.",
   "author": {
     "name": "Call Company AI",
@@ -19,7 +19,7 @@
       "interface": {
         "displayName": "Call Company",
         "shortDescription": "Run your AI phone agents",
-        "longDescription": "Call Company answers your business's phone calls with an AI agent. Connect it to review calls, check agent readiness, keep knowledge current, and prepare, test and publish agent configuration changes. Configuration edits stay in a draft until published; other actions have the effects described by their tools. Sign in to Call Company and approve access to an Organization. Available actions depend on the permissions you approve, your role and your plan.",
+        "longDescription": "Call Company answers your business's phone calls with an AI agent. Connect it to review calls, check agent readiness, keep knowledge current, and prepare, test and publish agent configuration changes. Configuration edits stay in a draft until published; other actions have the effects described by their tools. Sign in to Call Company and approve access to an Organization. Available actions depend on the permissions you approve, your role and your plan. Hosted MCP requires Call Company Pro or higher.",
         "developerName": "Call Company AI",
         "category": "Productivity",
         "websiteURL": "https://www.callcompany.ai",
@@ -35,7 +35,7 @@
         "composerIcon": "./assets/logo.png"
       },
       "publication": {
-        "release_notes": "First public release."
+        "release_notes": "Clarifies Pro access for hosted MCP and Business access for the direct public API and SDKs."
       },
       "review": {
         "test_cases": {
