@@ -48,9 +48,9 @@
             },
             {
               "description": "Summarize recent calls",
-              "prompt": "Summarize yesterday's calls for my front desk agent.",
-              "tools_triggered": "list_agents, list_calls",
-              "expected_behavior": "Reads yesterday's calls for that agent and summarizes outcomes and caller requests without pasting full transcripts."
+              "prompt": "Summarize my two most recent calls.",
+              "tools_triggered": "list_calls, get_call",
+              "expected_behavior": "Lists up to the two most recent calls in the connected Organization, reads each call's details, and summarizes caller requests and outcomes without pasting full transcripts. Follows next_cursor only if needed to reach two calls. States if fewer calls or missing details prevent a complete summary."
             },
             {
               "description": "Read one call",
