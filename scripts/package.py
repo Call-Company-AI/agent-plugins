@@ -69,8 +69,12 @@ def validate():
     cases = extension["review"]["test_cases"]
     require(len(cases["positive"]) == 5 and len(cases["negative"]) == 3, "Need 5 positive / 3 negative cases")
     for case in cases["positive"] + cases["negative"]:
-        require(all(case.get(k) for k in ("description", "prompt", "expected_behavior")),
+        require(all(isinstance(case.get(k), str) and case[k].strip()
+                    for k in ("description", "prompt", "expected_behavior")),
                 "Review scenarios must state expected behavior")
+    for case in cases["positive"]:
+        require(isinstance(case.get("tools_triggered"), str) and case["tools_triggered"].strip(),
+                "Positive tools_triggered must be a nonempty string")
     png = read_bytes("assets/logo.png")
     require(png[:8] == b"\x89PNG\r\n\x1a\n" and struct.unpack(">II", png[16:24]) == (512, 512),
             "Expected 512x512 PNG logo")

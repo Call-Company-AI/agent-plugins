@@ -2,7 +2,7 @@
 
 Connect Claude, ChatGPT, Codex, and other MCP clients to your [Call Company](https://www.callcompany.ai) account. Review calls, update knowledge, check agent readiness, and prepare, test, and publish changes to your AI phone agents.
 
-This repository contains connection settings and a workflow skill. Call Company's backend remains hosted; this package does not run a local server. A Call Company account and access to AI assistants are required. Available tools depend on your Organization, role, plan, and approved permissions.
+This repository contains connection settings and a workflow skill. Call Company's backend remains hosted; this package does not run a local server. A Call Company account on **Pro or higher** is required for this hosted MCP connection. Direct public API and SDK access require **Business or higher**; customer webhooks require **Pro or higher**. Available tools also depend on your Organization, role, and approved permissions.
 
 ## Connect
 
@@ -54,7 +54,7 @@ Agent configuration edits remain drafts until published. Other writes can have i
 
 ## Data and access
 
-Authorized tool results may include agent configuration, knowledge, call records, and transcripts. They travel between Call Company's servers and the assistant provider you connect. Share only the data needed for your request. Disconnect or revoke access in Call Company → Settings → AI assistants.
+Authorized tool results may include agent configuration, knowledge, call records, and transcripts. They travel between Call Company's servers and the assistant provider you connect. Share only the data needed for your request. Disconnect or revoke access in Call Company → Settings → AI assistants. A downgrade pauses developer runtime access; existing credentials do not bypass the current plan. Configuration and revocation remain available. If your billing screen does not offer Pro or Business, contact support for help moving from a legacy plan.
 
 [Privacy](https://www.callcompany.ai/privacy) · [Terms](https://www.callcompany.ai/terms) · [Support](https://www.callcompany.ai/contact) · [Connector documentation](https://app.callcompany.ai/docs/mcp-access)
 

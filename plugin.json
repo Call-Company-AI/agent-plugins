@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "callcompany",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Review calls, update knowledge, and manage your Call Company AI phone agents from ChatGPT, Codex, and Claude.",
   "author": {
     "name": "Call Company AI",
@@ -19,7 +19,7 @@
       "interface": {
         "displayName": "Call Company",
         "shortDescription": "Run your AI phone agents",
-        "longDescription": "Call Company answers your business's phone calls with an AI agent. Connect it to review calls, check agent readiness, keep knowledge current, and prepare, test and publish agent configuration changes. Configuration edits stay in a draft until published; other actions have the effects described by their tools. Sign in to Call Company and approve access to an Organization. Available actions depend on the permissions you approve, your role and your plan.",
+        "longDescription": "Call Company answers your business's phone calls with an AI agent. Connect it to review calls, check agent readiness, keep knowledge current, and prepare, test and publish agent configuration changes. Configuration edits stay in a draft until published; other actions have the effects described by their tools. Sign in to Call Company and approve access to an Organization. Available actions depend on the permissions you approve and your role in the Organization.",
         "developerName": "Call Company AI",
         "category": "Productivity",
         "websiteURL": "https://www.callcompany.ai",
@@ -35,7 +35,7 @@
         "composerIcon": "./assets/logo.png"
       },
       "publication": {
-        "release_notes": "First public release."
+        "release_notes": "Clarifies Pro access for hosted MCP and Business access for the direct public API and SDKs."
       },
       "review": {
         "test_cases": {
@@ -43,47 +43,31 @@
             {
               "description": "List agents and their readiness",
               "prompt": "Which of my Call Company agents are ready to take calls?",
-              "tools_triggered": [
-                "list_agents",
-                "get_agent_readiness"
-              ],
+              "tools_triggered": "list_agents, get_agent_readiness",
               "expected_behavior": "Lists the account's agents and, for each, whether it is ready to take calls and what is still missing."
             },
             {
               "description": "Summarize recent calls",
-              "prompt": "Summarize yesterday's calls for my front desk agent.",
-              "tools_triggered": [
-                "list_agents",
-                "list_calls"
-              ],
-              "expected_behavior": "Reads yesterday's calls for that agent and summarizes outcomes and caller requests without pasting full transcripts."
+              "prompt": "Summarize my two most recent calls.",
+              "tools_triggered": "list_calls, get_call",
+              "expected_behavior": "Lists up to the two most recent calls in the connected Organization, reads each call's details, and summarizes caller requests and outcomes without pasting full transcripts. Follows next_cursor only if needed to reach two calls. States if fewer calls or missing details prevent a complete summary."
             },
             {
               "description": "Read one call",
               "prompt": "What did the last caller want?",
-              "tools_triggered": [
-                "list_calls",
-                "get_call"
-              ],
+              "tools_triggered": "list_calls, get_call",
               "expected_behavior": "Opens the most recent call and states the caller's request and the outcome."
             },
             {
               "description": "Add knowledge without duplicating it",
               "prompt": "Tell my agent we are closed on December 24.",
-              "tools_triggered": [
-                "search_knowledge",
-                "add_knowledge"
-              ],
+              "tools_triggered": "search_knowledge, add_knowledge",
               "expected_behavior": "Checks existing knowledge first, then asks to confirm and adds or updates the entry; says callers hear it once it is published if needed."
             },
             {
               "description": "Change the greeting as a draft",
               "prompt": "Change my agent's greeting to 'Welcome to Bella Vista, how can I help?'",
-              "tools_triggered": [
-                "get_spec",
-                "apply_confirmed_patch",
-                "diff_versions"
-              ],
+              "tools_triggered": "get_spec, apply_confirmed_patch, diff_versions",
               "expected_behavior": "Asks to confirm, saves the greeting to the draft, shows what changed, and states that callers do not hear it until it is published."
             }
           ],
